@@ -1,0 +1,1 @@
+ALTER table `chracters` ADD `reborns` int(11) NOT NULL DEFAULT '0' after `pvpPoints`;
