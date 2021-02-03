@@ -89,9 +89,9 @@ public class DatabaseConnection {
 
     public static final void closeAll() throws SQLException {
         for (final Connection con : ThreadLocalConnection.allConnections) {
-	    if (con != null) {
-            	con.close();
-	    }
+            if (con != null) {
+                con.close();
+            }
         }
     }
 
@@ -108,8 +108,8 @@ public class DatabaseConnection {
             }
             try {
                 final Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/v111?autoReconnect=true", 
-					ServerConstants.SQL_USER, ServerConstants.SQL_PASSWORD);
+                        ServerProperties.getProperty("url", "jdbc:mysql://localhost:3306/v111?autoReconnect=true"),
+                        ServerProperties.getProperty("user", ServerConstants.SQL_USER), ServerProperties.getProperty("password", ServerConstants.SQL_PASSWORD));
                 allConnections.add(con);
                 return con;
             } catch (SQLException e) {

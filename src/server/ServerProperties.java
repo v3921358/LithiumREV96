@@ -21,30 +21,12 @@ public class ServerProperties {
     }
 
     static {
-        String toLoad = "channel.properties";
-        loadProperties(toLoad);
-		if (getProperty("GMS") != null) {
-			GameConstants.GMS = Boolean.parseBoolean(getProperty("GMS"));
-		}
-        try {
-            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("SELECT * FROM auth_server_channel_ip");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                //if (rs.getString("name").equalsIgnoreCase("gms")) {
-                //    GameConstants.GMS = Boolean.parseBoolean(rs.getString("value"));
-                //} else {
-                    props.put(rs.getString("name") + rs.getInt("channelid"), rs.getString("value"));
-                //}
-            }
-            rs.close();
-            ps.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.exit(0); //Big ass error.
+        if (getProperty("GMS") != null) {
+            GameConstants.GMS = Boolean.parseBoolean(getProperty("GMS"));
         }
-        toLoad = GameConstants.GMS ? "worldGMS.properties" : "world.properties";
-        loadProperties(toLoad);
-
+        loadProperties(GameConstants.GMS ? "worldGMS.properties" : "world.properties");
+        loadProperties("db.properties");
+        loadProperties("channel.properties");
     }
 
     public static void loadProperties(String s) {
