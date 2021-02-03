@@ -87,7 +87,7 @@ public class MapleDataTool {
 
     public static int getIntConvert(MapleData data) {
         if (data.getType() == MapleDataType.STRING) {
-            return Integer.parseInt(getString(data));
+            return Integer.parseInt(getString(data).replace("\r\n", ""));
         } else {
             return getInt(data);
         }
@@ -103,9 +103,9 @@ public class MapleDataTool {
     }
 
     public static int getInt(String path, MapleData data, int def) {
-		if (data == null) {
-			return def;
-		}
+        if (data == null) {
+            return def;
+        }
         return getInt(data.getChildByPath(path), def);
     }
 
@@ -121,10 +121,10 @@ public class MapleDataTool {
             return def;
         }
         if (d.getType() == MapleDataType.STRING) {
-	    String dd = getString(d);
-	    if (dd.endsWith("%")) {
-		dd = dd.substring(0, dd.length() - 1);
-	    }
+            String dd = getString(d);
+            if (dd.endsWith("%")) {
+                dd = dd.substring(0, dd.length() - 1);
+            }
             try {
                 return Integer.parseInt(dd);
             } catch (NumberFormatException nfe) {
