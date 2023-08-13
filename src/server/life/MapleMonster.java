@@ -400,7 +400,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
     public final int killBy(final MapleCharacter killer, final int lastSkill) {
 	if (killed) {
-	    return 1;
+	    return Integer.MAX_VALUE;
 	}
 	killed = true;
         int totalBaseExp = getMobExp();

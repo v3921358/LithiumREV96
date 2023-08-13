@@ -829,7 +829,7 @@ public final class MapleMap {
             }
 
         }
-        if (withDrops && dropOwner != 1) {
+        if (withDrops && dropOwner != Integer.MAX_VALUE) {
             MapleCharacter drop = null;
             if (dropOwner <= 0) {
                 drop = chr;
