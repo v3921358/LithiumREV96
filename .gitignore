@@ -1,2 +1,6 @@
+out/
 .idea/
 *.iml
+
+wz/
+db.properties
