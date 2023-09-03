@@ -1122,43 +1122,6 @@ public class SuperGMCommand {
         }
     }
 
-    public static class Rev extends CommandExecute {
-
-        private static int revision = -1;
-
-        public static int getRevision() {
-            if (revision != -1) {
-                return revision;
-            } else {
-                InputStream svninfo = AdminCommand.class.getResourceAsStream("/all-wcprops");
-                if (svninfo == null) {
-                    return revision;
-                }
-                Scanner sc = new Scanner(svninfo);
-                while (sc.hasNext()) {
-                    String[] s = sc.next().split("/");
-                    if (s.length > 1 && s[1].equals("svn")) {
-                        revision = Integer.parseInt(s[5]);
-                        break;
-                    }
-                }
-                sc.close();
-            }
-            return revision;
-        }
-
-        @Override
-        public int execute(MapleClient c, String[] splitted) {
-            MapleCharacter player = c.getPlayer();
-            if (getRevision() != -1) {
-                c.getPlayer().dropMessage(5, "This is revision " + revision + ".");
-            } else {
-                c.getPlayer().dropMessage(5, "Can't find revision T_T");
-            }
-            return 1;
-        }
-    }
-
     public static class ReloadIPMonitor extends CommandExecute {
 
         @Override

@@ -46,7 +46,7 @@ public class Start {
             throw new RuntimeException("[EXCEPTION] Please check if the SQL server is active.");
         }
 
-        System.out.println("[" + ServerProperties.getProperty("net.sf.odinms.login.serverName") + "] Revision: " + SuperGMCommand.Rev.getRevision());
+        System.out.println("[" + ServerProperties.getProperty("net.sf.odinms.login.serverName") + "] Revision: " + ServerConstants.MAPLE_VERSION + "." + ServerConstants.MAPLE_PATCH);
         World.init();
         WorldTimer.getInstance().start();
         EtcTimer.getInstance().start();
