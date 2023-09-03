@@ -26,6 +26,7 @@ import server.MapleInventoryManipulator;
 import server.MapleItemInformationProvider;
 import tools.FileoutputUtil;
 import tools.packet.CField;
+import tools.packet.CWvsContext;
 import tools.packet.MTSCSPacket;
 import tools.Triple;
 import tools.data.LittleEndianAccessor;
@@ -91,6 +92,7 @@ public class CashShopOperation {
         } else {
             CashShopServer.getPlayerStorage().registerPlayer(chr);
             c.getSession().write(MTSCSPacket.warpCS(c));
+            c.getSession().write(CWvsContext.serverMessage(""));
             CSUpdate(c);
         }
 
