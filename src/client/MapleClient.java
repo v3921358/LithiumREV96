@@ -429,8 +429,6 @@ public class MapleClient implements Serializable {
                 tempban = getTempBanCalendar(rs);
                 gender = rs.getByte("gender");
 
-                final boolean admin = rs.getInt("gm") > 1;
-
                 if (secondPassword != null && salt2 != null) {
                     secondPassword = LoginCrypto.rand_r(secondPassword);
                 }
@@ -886,7 +884,7 @@ public class MapleClient implements Serializable {
                     FileoutputUtil.outputFileError(FileoutputUtil.Acc_Stuck, e);
                     System.err.println(getLogMessage(this, "ERROR") + e);
                 } finally {
-                    if (RemoveInChannelServer && ch > 0) {
+                    if (RemoveInChannelServer && ch == -10) {
                         CashShopServer.getPlayerStorage().deregisterPlayer(idz, namez);
                     }
                     player = null;
