@@ -746,7 +746,7 @@ public class PacketHelper {
         mplew.writeInt(0); // 1?
         if (!GameConstants.isThrowingStar(item.getItemId()) && !GameConstants.isBullet(item.getItemId())) {
             mplew.writeShort(1); // stacksize
-            mplew.writeShort(item.getBuyable());
+            mplew.writeShort(item.getBuyable() > 0 ? item.getBuyable() : ii.getSlotMax(item.getItemId())); // priority to official shops, then we take from wz if don't have.
         } else {
             mplew.writeZeroBytes(6);
             mplew.writeShort(BitTools.doubleToShortBits(ii.getPrice(item.getItemId())));
