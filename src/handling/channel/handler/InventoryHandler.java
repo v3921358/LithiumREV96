@@ -3399,9 +3399,12 @@ public class InventoryHandler {
                 }
                 break;
             }
+            case 5450000:
             case 5452001:
             case 5450003:
-            case 5450000: { // Mu Mu the Travelling Merchant
+            case 5450004:
+            case 5450006:
+            case 5450007: { // Miu Miu the Travelling Merchant
                 for (int i : GameConstants.blockedMaps) {
                     if (c.getPlayer().getMapId() == i) {
                         c.getPlayer().dropMessage(5, "You may not use this command here.");
@@ -3410,7 +3413,7 @@ public class InventoryHandler {
                     }
                 }
                 if (c.getPlayer().getLevel() < 10) {
-                    c.getPlayer().dropMessage(5, "You must be over level 10 to use this command.");
+                    c.getPlayer().dropMessage(5, "You must be over level 10 to use this item.");
                 } else if (c.getPlayer().hasBlockedInventory() || c.getPlayer().getMap().getSquadByMap() != null || c.getPlayer().getEventInstance() != null || c.getPlayer().getMap().getEMByMap() != null || c.getPlayer().getMapId() >= 990000000) {
                     c.getPlayer().dropMessage(5, "You may not use this command here.");
                 } else if ((c.getPlayer().getMapId() >= 680000210 && c.getPlayer().getMapId() <= 680000502) || (c.getPlayer().getMapId() / 1000 == 980000 && c.getPlayer().getMapId() != 980000000) || (c.getPlayer().getMapId() / 100 == 1030008) || (c.getPlayer().getMapId() / 100 == 922010) || (c.getPlayer().getMapId() / 10 == 13003000)) {
